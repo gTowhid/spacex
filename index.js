@@ -26,7 +26,7 @@ function countUp() {
       // if counter is less than target, add increment
       if (c < target) {
         counter.innerText = `${Math.ceil(c + increment)}`;
-        setTimeout(updateCounter, 75);
+        setTimeout(updateCounter, target > 10 ? 25 : 75);
       } else {
         counter.innerText = target;
       }
@@ -48,7 +48,7 @@ function countDown() {
       // if counter is greater than target, substract decrement
       if (c > target) {
         counter.innerText = `${Math.floor(c - decrement)}`;
-        setTimeout(updateCounter, 75);
+        setTimeout(updateCounter, target > 10 ? 25 : 75);
       } else {
         counter.innerText = target;
       }
@@ -60,7 +60,7 @@ function countDown() {
 
 const options = {
   rootMargin: '0px',
-  threshold: 0.5,
+  threshold: window.innerWidth > 600 ? 0.5 : 0.2,
 };
 
 const observer = new IntersectionObserver(
